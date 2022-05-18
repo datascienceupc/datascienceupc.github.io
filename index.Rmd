@@ -35,3 +35,119 @@ Analizar según nuestro dataset de la UNSW-NB15 los tipos de ataques cibernétic
 ### Packages
 
 
+
+```{r attr.output='style="max-height: 100px;"'}
+read.csv("D:/DS/datascienceupc.github.io/ds.csv", sep=";")
+View(ds)
+```
+
+
+
+# Seleccionamos las columnas de estudio Attack Category,  Protocol y Source IP
+
+### Seleccionamos a traves de un vector
+
+```{r attr.output='style="max-height: 100px;"'}
+
+
+ds[,c(3,5,6)] 
+```
+
+
+### Seleccionamos a treves de select
+
+```{r attr.output='style="max-height: 100px;"'}
+ds %>%
+  select(Attack.category, Protocol, Source.IP) 
+```
+
+
+### Filtramos por Protocolo TCP
+
+```{r attr.output='style="max-height: 100px;"'}
+ds %>%
+  select(Attack.category, Protocol, Source.IP) %>%
+  filter(Protocol == "tcp")
+
+```
+
+
+### Filtramos por Protocolo UDP
+
+```{r attr.output='style="max-height: 100px;"'}
+ds %>%
+  select(Attack.category, Protocol, Source.IP) %>%
+  filter(Protocol == "udp")
+
+```
+
+### Verificamos las IPs de los ataques
+
+```{r attr.output='style="max-height: 100px;"'}
+  unique(ds$Source.IP)
+
+```
+
+
+### Filtramos por el Origen de los ataques teniendo en cuenta las IPs.
+
+```{r attr.output='style="max-height: 100px;"'}
+ds %>%
+  select(Attack.category, Protocol, Source.IP) %>%
+  filter(Source.IP == "175.45.176.0")
+
+```
+
+
+```{r attr.output='style="max-height: 100px;"'}
+ds %>%
+  select(Attack.category, Protocol, Source.IP) %>%
+  filter(Source.IP == "175.45.176.3")
+
+```
+
+
+```{r attr.output='style="max-height: 100px;"'}
+ds %>%
+  select(Attack.category, Protocol, Source.IP) %>%
+  filter(Source.IP == "175.45.176.2")
+
+```
+
+```{r attr.output='style="max-height: 100px;"'}
+ds %>%
+  select(Attack.category, Protocol, Source.IP) %>%
+  filter(Source.IP == "175.45.176.1")
+
+```
+
+
+
+# Análisis en Graficos para ello utilizamos ggplot2, plot
+
+
+```{r }
+TCP <- ds %>%
+  select(Attack.category, Protocol, Source.IP) %>%
+  filter(Protocol == "tcp")
+  write.csv2(TCP, "TCP.csv")
+
+```
+
+
+
+
+```{r attr.output='style="max-height: 100px;"'}
+read.csv("D:/DS/datascienceupc.github.io/TCP1.csv", sep=";")
+View(TCP1)
+```
+
+```{r }
+plot(TCP1$NCategory)
+
+```
+
+
+
+
+
