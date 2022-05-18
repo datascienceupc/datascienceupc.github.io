@@ -1,7 +1,7 @@
-name: "my-website"
+name: "GRUPO 8"
 output_dir: "."
 navbar:
-  title: "My Website"
+  title: "GRUPO 8"
   left:
     - text: "Home"
       href: index.html
