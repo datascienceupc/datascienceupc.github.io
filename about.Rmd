@@ -1,5 +1,18 @@
 ---
-title: "About This Website"
+title: "GRUPO 8"
 ---
 
-More about this website.
+## Curso:
+
+- Herramientas y Técnicas de Detección de Ciberamenazas
+- Data Science Aplicado a la Ciberseguridad
+
+## Docente:
+
+- Arnau Sangra
+
+## Integrantes:
+
+- JP
+- JL
+- FQ
