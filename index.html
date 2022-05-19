@@ -390,12 +390,58 @@ cibernéticos más frecuentes, procedencia y puertos más vulnerables</p>
 <h2>Análisis Exploratorio</h2>
 <div id="datasets" class="section level3">
 <h3>Datasets</h3>
+<ul>
+<li>UNSW SYSNEY <a
+href="https://research.unsw.edu.au/projects/unsw-nb15-dataset"
+class="uri">https://research.unsw.edu.au/projects/unsw-nb15-dataset</a></li>
+<li>GITHUB <a
+href="https://github.com/shramos/Awesome-Cybersecurity-Datasets"
+class="uri">https://github.com/shramos/Awesome-Cybersecurity-Datasets</a></li>
+<li>MAXMIND <a href="https://www.maxmind.com/en/home"
+class="uri">https://www.maxmind.com/en/home</a></li>
+</ul>
 </div>
 <div id="standards" class="section level3">
 <h3>Standards</h3>
+<ul>
+<li>GITHUB <a href="https://github.com/rstudio/cheatsheets/"
+class="uri">https://github.com/rstudio/cheatsheets/</a></li>
+<li>MITRE <a href="https://mitre.org/about/"
+class="uri">https://mitre.org/about/</a></li>
+<li>TELEGRAM <a href="https://t.me/DataScience_Books"
+class="uri">https://t.me/DataScience_Books</a></li>
+<li>Book to WEBPAGE <a
+href="https://bookdown.org/yihui/rmarkdown/bookdown-publish.html#rstudio-connect"
+class="uri">https://bookdown.org/yihui/rmarkdown/bookdown-publish.html#rstudio-connect</a></li>
+<li>Rmarkdown <a
+href="https://rmarkdown.rstudio.com/authoring_quick_tour.html#Markdown_Basics"
+class="uri">https://rmarkdown.rstudio.com/authoring_quick_tour.html#Markdown_Basics</a></li>
+</ul>
 </div>
 <div id="packages" class="section level3">
 <h3>Packages</h3>
+<ul>
+<li>DPLYR</li>
+<li>GGPLOT2</li>
+<li>MAPS</li>
+<li>RGEOLOCATE</li>
+<li>RWORLDMAP</li>
+<li>SELECT</li>
+<li>SP</li>
+<li>STRINGR</li>
+<li>SHINY</li>
+<li>SJSTATS</li>
+<li>READR</li>
+<li>PLOTLY</li>
+<li>HTMLTOOLS</li>
+<li>SITE.YML</li>
+<li>NOJEKYLL</li>
+</ul>
+<p>Al tener BiG DATA, es importante segmentar para el estudio y análisis
+que vamos hacer para nuestro análisis exploratorio a partir de la data
+que se tiene y los problemas que nos planteamos en un principio para
+ello detallaremos paso a paso lo que se hizo para poder llega a nuestro
+objetivo y conclusiones.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.csv</span>(<span class="st">&quot;D:/DS/datascienceupc.github.io/ds.csv&quot;</span>, <span class="at">sep=</span><span class="st">&quot;;&quot;</span>)</span></code></pre></div>
 <pre style="max-height: 100px;"><code>##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   Start.time.Last.time.Attack.category.Attack.subcategory.Protocol.Source.IP.Source.Port.Destination.IP.Destination.Port.Attack.Name.Attack.Reference..
 ## 1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             1421927414,1421927416,Reconnaissance,HTTP,tcp,175.45.176.0,13284,149.171.126.16,80,Domino Web Server Database Access: /doladmin.nsf (https://strikecenter.bpointsys.com/bps/strikes/recon/http/domino/access_domino_doladmin_nsf.xml),-,.
@@ -4139,6 +4185,14 @@ class="section level1">
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Attack.category, Protocol, Source.IP) <span class="sc">%&gt;%</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Protocol <span class="sc">==</span> <span class="st">&quot;tcp&quot;</span>)</span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write.csv2</span>(TCP, <span class="st">&quot;TCP.csv&quot;</span>)</span></code></pre></div>
+<div id="cuáles-son-los-ataques-más-frecuentes" class="section level2">
+<h2>1. ¿Cuáles son los ataques más frecuentes?</h2>
+<p>Como respuesta a ello encontramos 9 tipos de ataques que tienen como
+categoria principal (Exploits, Fuzzers, Reconnaissance, DoS, Shellcode,
+Backdoor, Analysis y Worms)</p>
+<p>Para llegar a este punto tuvimos que filtar y crear nuevos sets
+segementando FACTOR, CHARACTER AND POSIXct, en el que encontramos los
+resultados como mostramos en las siguiente figura.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.csv</span>(<span class="st">&quot;D:/DS/datascienceupc.github.io/TCP1.csv&quot;</span>, <span class="at">sep=</span><span class="st">&quot;;&quot;</span>)</span></code></pre></div>
 <pre style="max-height: 100px;"><code>##       X      NCategory Protocol    Source.IP
 ## 1     1 Reconnaissance      tcp 175.45.176.0
@@ -4394,7 +4448,138 @@ class="section level1">
 ##  [ reached &#39;max&#39; / getOption(&quot;max.print&quot;) -- omitted 56346 rows ]</code></pre>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(TCP1)</span></code></pre></div>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(TCP1<span class="sc">$</span>NCategory)</span></code></pre></div>
+<p><img src="index_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+</div>
+<div id="de-dónde-proceden-los-ataques-más-frecuentes"
+class="section level2">
+<h2>2. ¿De dónde proceden los ataques más frecuentes?</h2>
+<p>Para dar respuesta a la procedencia de los ataques más frecuentes
+tuvimos que utilizar vectores de correlacion y segmentar la información
+y a ello contatenar en función a la categoria de los ataques y los
+protocolos que más se usaron para llegar a la IPs de los atacantes como
+se muestra en nuestra figura.</p>
+<p>Para llegar a este punto tuvimos que filtar y crear nuevos sets
+segementando FACTOR, CHARACTER AND POSIXct, en el que encontramos los
+resultados como mostramos en las siguiente figura.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(TCP , <span class="fu">aes</span>(<span class="at">fill=</span>Source.IP, <span class="at">y=</span>Protocol, <span class="at">x=</span>Attack.category)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">&quot;stack&quot;</span>,<span class="at">stat=</span><span class="st">&#39;identity&#39;</span>)<span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">&quot;NOMBRE DE ATAQUES&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;VULNERABILIDADES&quot;</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;ANÁLISIS DE ATAQUES MÁS FRECUENTES&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+<div id="qué-puertos-son-más-vulnerables" class="section level2">
+<h2>3. ¿Qué puertos son más vulnerables?</h2>
+<p>Lo primero que se hizo para dar visibilidad a las vulnerabilidades es
+que puertos en función a los protocolos da como visibilidad al puerto
+UDP y TCP. Para llegar a este punto tuvimos que filtrar y crear nuevos
+sets segementando FACTOR, CHARACTER AND POSIXct, en el que encontramos
+los resultados como mostramos en las siguiente figura.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(Port<span class="sc">$</span>Destination.Port)</span></code></pre></div>
+<pre style="max-height: 100px;"><code>##    [1]    80 32780  5555  3000   111  6661  8080   143    25  5060   445 46823   502   110   162 36668
+##   [17] 35019 59324 19757  1521    23 65419    21 21375  4316    69   161 62999 64551 16000  3690  1900
+##   [33]   119 11353  6542  5002  4354   554   443 56301     0 20031  7080 34049 57026 60696 37552 58215
+##   [49]  3306   179 54418 58964 16596 51456  7510 52674   515   777   514  1128  2401   631 41523 41524
+##   [65] 40651 21700  1723  8433 28584   500  8976   389  8088 58459 52366   105 50000 43654 20222 55875
+##   [81] 24171  6371 65185  6667   139 58837 59807  1533 12174  4322  2537 28149    53 63572  2100 64661
+##   [97]  1707  6502  3050 65287  8000 45729  5666  1755  8028   901  1478 27135 59548  9111  9850  8776
+##  [113]  4444 49160 49909 49416  4433 19988 14098 56220 54762  1812  2049 11005  3543   548   137  1530
+##  [129] 19634  5900 65043 56598  2001 64712 41864 48910  1582  5600 45448  6003 12625  1027  1630 20034
+##  [145]  4105  2513   520 27000  9191  2140  7002   617  2000 47310 27632 29348 60119 51170 51169 51226
+##  [161]  2200 64583 19813  1158 53383 52348  5159  3250 62450   910  1094  3265 19980 50522 33685 53597
+##  [177]  3240  8082 39083 52312 15264 62557  8858 58824  6877  5837  3612 61865  3246 50002 30000 14115
+##  [193]  8081 23726 52645 61932  3128  1526 25269 26274 34444  9855  1024    67 63397 54345 65535 11387
+##  [209]  1500 64075 57576 58464 50368  1494 53393  6969  2055   497 28636 62793  1217 21026   513 13666
+##  [225]  9999  2427 38292  6129 46744 60253 59789   905  3252 63997  2400 13701 62540 56420  6071  5250
+##  [241]  1211 16876 54040 41080  9080 58868 12345 31643   383  2930 47252 33278  5081 54405 38624 12221
+##  [257] 15050  6014 20101  6503 15556 29483 12401 56077  7001  1234 60207 16502  3389 18667  7777 52999
+##  [273]  5190  8300 12168 22126  8443 16890   135 46010 44941 58626  7144  7500 14681  6905 42478 59145
+##  [289]  9002 33055  3533 45806 13531  2317  5814 61937 60693 46824 14619 19985 65120    42  8022 13722
+##  [305]  6070   705 42054 11234 57915  8001 43091    68 54329  4377 21922 17000 19810 51674 48968 53402
+##  [321] 60345 58278  8778 54812  5358 16843 30029 62466 46776  3602 12807 42864 25128  4848 65080  6504
+##  [337] 50375 52407 11760 38975 56166   123 36678  8182 57230  7631 64394 58134  8554 59996 57056 63619
+##  [353]  3333 65054 52268  1311 15577  2103 63687 60275 12399 63251 51627 55225 65365  3104  1434  3446
+##  [369]  4569  4559  8888  6660 54319  5512 22056 59440 26669  7824 42884 26502  9049 14455  1210 64561
+##  [385] 23028    89 19255 21814 30005 49938  8020 21148 62475 52814 23320 56971 49693 52759 61007 12510
+##  [401] 13838 56824 34931   998 32478 12400 19680 17525   524 49152  8045 29063 49846 30888 63249 60160
+##  [417]  1100  7937    22 36510   921 62285 16102 33060 20168 57902  5432  1741 50500  9495 59497  2444
+##  [433] 33107 48486 10202 29403 26188  7770 63623 12621 59374  8008 43474 18081 63803 12397  1761 34384
+##  [449] 39545  8861 60702 19300 22218  7145  6106  8652  2148 18820 36772  3500 41584 57738 63607 51767
+##  [465] 40007 10526 60589  1011 17761  3607   749 30651 59179  2512 56242 61996 26162 61955   464 30236
+##  [481] 57788 23476 16091 24384  2308 53848 33936 59465 43327  1080 49981 12175   555 53956  8903  9090
+##  [497] 32596 13841 11682  7205 59706    88 44305 54470 28520 14624 61114 18534  4150 51918 35788 40046
+##  [513] 18810 60471 55152 30466  3817 62659 60994 36399  7079 65446  1984  7180 56818 14644    81 52846
+##  [529]  7000 13064 22222 50619  8100 51178 52525 37022 45847 57401   138 34573  1838 20001 11995   912
+##  [545]  3443  9700 14189 63612 63866 64110 49690 41336 10203  1099 24800 49260 50342 50158 64096 20159
+##  [561] 25246 10607 51123  5000 58297  9088 15948 10000 39205 38611 21064 54906  2398 54870  8899 27386
+##  [577] 40319 41082 62649 34054  4611  8484 42121 21554  1433 18656    31 14654  6458 21735 50884  2967
+##  [593] 14856 55198 45077  2647 13843 56174 59131  2003  4467  5495  3972 10397 23968 49561  7523 64065
+##  [609] 60713 65502 12107 50243  6988 23573 64961 43902  3217 51917   808 32832 50017  3465 64682  1026
+##  [625]  5053 51243 34006 40857 63717  8093 59850  3057 49259  1477 64114  8983 65306 41683 57746 61568
+##  [641] 48202  5405  4734 63681 52678 18250 49394  2954  1581 52170  1584 52692 54664 14232  3916  1718
+##  [657] 36788 18175 54385  1013 61181 38453   446  9816 56984 50795 30493 53834 62569 61561 53169 36436
+##  [673] 65053  4442 52060  6050 47262 10008  1012 62934 41564 45759  4827 39883  5357 51842 44812  1014
+##  [689] 23561  8800  5451 25245 52439 32722 55869 25590  5038 29941  2690  6783  5168 56907  8042 55126
+##  [705] 61174 12557 53833 33244  1813 24455 58104 42645  1339 16388 60924 64184 64602 27909 34467 45408
+##  [721] 54444 54621 14254 12213 57955  8014  1111 53209 45744 16072 29005 63306 55769 59076 61534 48036
+##  [737] 51192 60706 59437  5102 24621 41305 49830 58063 45947 12622 54297 49086  3881  5001  5770 49725
+##  [753] 18725 58498 61523 28431 54097 64367  3920 17497 60296 17426 41992  7771 60433  5995 17245 43299
+##  [769] 54832 19686 63589 60065  9587 47535 60261 50988 47798 50040 21764 49024 33025 60704 27974 21936
+##  [785] 50979 22281 20102 16216 28172  4291 51269 50222 11371 49463  3222 47123 31282 30292 49029  3860
+##  [801] 31919 33128  4988  1626 17351 41055 27969 46066 50108 17718 51043 64756  1075 64696 65361  4434
+##  [817] 39915 62517 14197 65497 63795 59199 39184 46488 24956 55760 59080 22054 13550  2633 28671 55872
+##  [833] 54284  7189 28309 62686 12905 58912 65262 54517 49767 53244 59106 53339  8083 52549 50788 35093
+##  [849] 61574 55410 65036 38829 39253 62095 60265  4687 52397  5513 29895 32594 48066 61987  5534 49750
+##  [865] 20559 34217 50632 19713 19111 61273 19728 51380  6917 25308 56198 24726 34999 19035 50665 30753
+##  [881] 62485  8102 16743  4204 32180  2900 50899 55655 58421 17585 41817  6683 41216 56173 51811 58211
+##  [897] 16496 45988 27704 49272 53167  1693 56445 35021 59735 46750 62584  4986 49136  2552 33931 19168
+##  [913] 59783 10381 27427 62031 26551 54712 54873  3958 44534 57153 51265 61260 48877 58877 11021  8712
+##  [929] 57566 56204  4381 31284  4202 52847 32251 61813 36782 31369  4146 36824  5535 37726 30013 53019
+##  [945] 17038 10695 46029 10183 35935 61329 53962 55289 27151 39241 29114 62892 50147 63458  7181 63651
+##  [961] 51131 44440 48956 61275 34958 56285 18992 63587  3773 47332  5072 64523  1855 64145 53851 51861
+##  [977] 47700 52568 52848 13059 44022 22814 19420 52132 46046 59853 27153 16101 33423 65198 21695  3411
+##  [993] 12987 51721  9526  2875 17837 10016 32349  5402
+##  [ reached getOption(&quot;max.print&quot;) -- omitted 2182 entries ]</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ds<span class="sc">$</span>Destination.Port)</span></code></pre></div>
+<p><img src="index_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>Port<span class="sc">$</span>Protocols, <span class="at">y=</span>Port<span class="sc">$</span>Destination.Port, <span class="at">pch=</span><span class="fl">1.3</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="index_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>Se tuvo que realizar una matriz para dar mejor visibilidad a los
+puertos más vulnerables respecto al valor del puerto como es 0-1000,
+1000-3000 y 3000-5000 en función a los ataques más frecuentes como se
+puede apreciar en nuestra figura</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>Port<span class="sc">$</span>Category, <span class="at">y=</span>Port<span class="sc">$</span>Destination.Port, <span class="at">pch=</span><span class="fl">1.3</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x=</span>Port<span class="sc">$</span>Category, <span class="at">cex =</span> .<span class="dv">10000</span>, <span class="at">col =</span> <span class="st">&quot;dark red&quot;</span>)</span></code></pre></div>
+<p><img src="index_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<div
+id="instalación-el-package-rgeolocate-maps-maxmind-rworldmap-149.171.126.16--175.45.176.3"
+class="section level3">
+<h3>INSTALACIÓN EL PACKAGE RGEOLOCATE, MAPS, MAXMIND, RWORLDMAP
+149.171.126.16- 175.45.176.3</h3>
+<p>Para poder dar lugar de del origen exacto tuvimos que utilizar sets
+de maps para poder llegar al páis, código de la ciudad y la ciudad. como
+podemos dar visibilidad en nuestro caso de estudio</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>TCP<span class="sc">$</span>IP <span class="ot">&lt;-</span> <span class="st">&quot;175.45.176.3&quot;</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;TCP$IP&quot;</span>,<span class="st">&quot;GeoLite2-Country.mmdb&quot;</span>, <span class="at">package =</span> <span class="st">&quot;rgeolocate&quot;</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>results</span></code></pre></div>
+<pre><code>##   continent_name country_code country_name
+## 1           Asia           KP  North Korea</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>TCP<span class="sc">$</span>IP <span class="ot">&lt;-</span> <span class="st">&quot;175.45.176.0&quot;</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;TCP$IP&quot;</span>,<span class="st">&quot;GeoLite2-Country.mmdb&quot;</span>, <span class="at">package =</span> <span class="st">&quot;rgeolocate&quot;</span>)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>results</span></code></pre></div>
+<pre><code>##   continent_name country_code country_name
+## 1           Asia           KP  North Korea</code></pre>
+</div>
+</div>
+<div id="conclusiones" class="section level2">
+<h2>Conclusiones</h2>
+<p>De acuerdo al análisis propuesto con el planteamiento del problema
+según el dataset que conseguimos para análizar se llego al objetivo
+logrando dar respuestas a nuestras interrrogantes, como los tipos de
+ataques, El Origen de los ataques y que puertos fueron volnerados. Esto
+nos dio una visibilidad mejor para que nosotros a traves de herramientas
+con Maching Learning podamos , Detectar, Identificar y Responder con
+herramientas de monitoreo.</p>
+<p>Nuestra resiliencia y dar una visibilidad holistica al estudio de
+DataScience es una de nuestras mejores herramientas para dar una
+solución a un problema.</p>
+</div>
 </div>
 
 

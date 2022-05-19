@@ -13,6 +13,6 @@ title: "GRUPO 8"
 
 ## Integrantes:
 
-- JP
-- JL
-- FQ
+- Juan Palao
+- Jhon Lipa
+- Francisco Quispe
